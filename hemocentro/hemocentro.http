@@ -1,0 +1,6 @@
+@hemocentro_HostAddress = http://localhost:5134
+
+GET {{hemocentro_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
