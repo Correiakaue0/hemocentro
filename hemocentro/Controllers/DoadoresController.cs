@@ -18,6 +18,7 @@ namespace hemocentro.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public IActionResult Get()
         {
             try
@@ -46,6 +47,7 @@ namespace hemocentro.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "doador, admin")]
         public IActionResult Update(long id, [FromBody] DoadoresViewModel doadores)
         {
             try
@@ -60,6 +62,7 @@ namespace hemocentro.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "doador, admin")]
         public IActionResult Delete(long id)
         {
             try

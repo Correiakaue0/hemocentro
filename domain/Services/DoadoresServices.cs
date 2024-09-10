@@ -2,6 +2,7 @@
 using domain.Interfaces.Repositorios;
 using domain.Interfaces.Services;
 using domain.ViewModel;
+using Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace domain.Services
                 Name = doadorViewModel.Name,
                 Role = "doador",
                 Email = doadorViewModel.Email,
-                Password = doadorViewModel.Password,
+                Password = PasswordService.HashPassword(doadorViewModel.Password),
                 TipoSanguineo = doadorViewModel.TipoSanguineo,
                 DataNasc = doadorViewModel.DataNasc,
                 Peso = doadorViewModel.Peso,

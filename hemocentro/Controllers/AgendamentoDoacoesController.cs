@@ -1,12 +1,14 @@
 ﻿using domain.Interfaces.Services;
 using domain.Services;
 using domain.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace hemocentro.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "doador, admin")]
     public class AgendamentoDoacoesController : ControllerBase
     {
         private readonly IAgendamentoDoacoesService _agendamentoDoacoesService;
@@ -17,6 +19,7 @@ namespace hemocentro.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public IActionResult Get()
         {
             try

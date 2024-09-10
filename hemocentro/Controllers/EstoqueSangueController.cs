@@ -8,6 +8,7 @@ namespace hemocentro.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "admin")]
     public class EstoqueSangueController : ControllerBase
     {
         private readonly IEstoqueSangueService _estoquesangueService;
