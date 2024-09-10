@@ -21,10 +21,12 @@ namespace infra.Context
             modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new DoadoresMap());
             modelBuilder.ApplyConfiguration(new EstoqueSangueMap());
+            modelBuilder.ApplyConfiguration(new AgendamentoDoacoesMap());
         }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Doadores> Doadores { get; set; }
         public DbSet<EstoqueSangue> EstoqueSangue { get; set; }
+        public DbSet<AgendamentoDoacoes> AgendamentoDoacoes { get; set; }
     }
 }

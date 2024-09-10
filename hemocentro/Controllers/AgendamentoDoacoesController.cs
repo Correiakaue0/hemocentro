@@ -1,20 +1,19 @@
-﻿using domain.Entities;
-using domain.Interfaces.Services;
+﻿using domain.Interfaces.Services;
+using domain.Services;
 using domain.ViewModel;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace hemocentro.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class DoadoresController : ControllerBase
+    public class AgendamentoDoacoesController : ControllerBase
     {
-        private readonly IDoadoresService _doadoresService;
+        private readonly IAgendamentoDoacoesService _agendamentoDoacoesService;
 
-        public DoadoresController(IDoadoresService doadoresService)
+        public AgendamentoDoacoesController(IAgendamentoDoacoesService agendamentoDoacoesService)
         {
-            _doadoresService = doadoresService;
+            _agendamentoDoacoesService = agendamentoDoacoesService;
         }
 
         [HttpGet]
@@ -22,8 +21,8 @@ namespace hemocentro.Controllers
         {
             try
             {
-                var doadores = _doadoresService.Get();
-                return Ok(doadores);
+                var agendamentoDoacoes = _agendamentoDoacoesService.Get();
+                return Ok(agendamentoDoacoes);
             }
             catch (Exception ex)
             {
@@ -32,11 +31,11 @@ namespace hemocentro.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] DoadoresViewModel doadores)
+        public IActionResult Agendar([FromBody] AgendamentoDoacoesViewModel agendamentoDoacoesViewModel)
         {
             try
             {
-                _doadoresService.Create(doadores);
+                _agendamentoDoacoesService.Agendar(agendamentoDoacoesViewModel);
                 return Ok();
             }
             catch (Exception ex)
@@ -46,11 +45,11 @@ namespace hemocentro.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(long id, [FromBody] DoadoresViewModel doadores)
+        public IActionResult AtualizarAgendamento(long id, [FromBody] AtualizarAgendamentoDoacoesViewModel agendamentoDoacoesViewModel)
         {
             try
             {
-                _doadoresService.Update(id, doadores);
+                _agendamentoDoacoesService.AtualizarAgendamento(id, agendamentoDoacoesViewModel);
                 return Ok();
             }
             catch (Exception ex)
@@ -60,11 +59,11 @@ namespace hemocentro.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(long id)
+        public IActionResult CancelarAgendamento(long id)
         {
             try
             {
-                _doadoresService.Delete(id);
+                _agendamentoDoacoesService.CancelarAgendamento(id);
                 return Ok();
             }
             catch (Exception ex)

@@ -4,7 +4,7 @@ using domain.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Store.Controllers
+namespace hemocentro.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

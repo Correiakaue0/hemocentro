@@ -15,5 +15,6 @@ namespace domain.Entities
 
         [JsonIgnore]
         public ICollection<EstoqueSangue> EstoquesSangue { get; set; }
+        public ICollection<AgendamentoDoacoes> AgendamentoDoacoes { get; set; }
     }
 }

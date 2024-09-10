@@ -16,8 +16,10 @@ builder.Services.AddSwaggerGen();
 //Dependency Injection SqlContext
 builder.Services.AddScoped<IEstoqueSangueService, EstoqueSangueServices>();
 builder.Services.AddScoped<IDoadoresService, DoadoresServices>();
+builder.Services.AddScoped<IAgendamentoDoacoesService, AgendamentoDoacoesServices>();
 builder.Services.AddScoped<IDoadoresRepositorio, DoadoresRepositorio>();
 builder.Services.AddScoped<IEstoqueSangueRepositorio, EstoqueSangueRepositorio>();
+builder.Services.AddScoped<IAgendamentoDoacoesRepositorio, AgendamentoDoacoesRepositorio>();
 builder.Services.AddScoped<Contexto, Contexto>();
 
 var app = builder.Build();
