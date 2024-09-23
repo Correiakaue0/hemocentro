@@ -10,9 +10,11 @@ namespace domain.Interfaces.Services
 {
     public interface IEstoqueSangueService
     {
+        string ConsultaNecessidades(string tipoSanguineo);
         void Create(EstoqueSangueViewModel doador);
         void Delete(long id);
         IList<EstoqueSangue> Get();
+        List<string> GetTipoSanguineos();
         void Update(long id, EstoqueSangueViewModel estoquesangue);
     }
 }

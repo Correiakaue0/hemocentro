@@ -9,6 +9,7 @@ namespace domain.Interfaces.Repositorios
 {
     public interface IEstoqueSangueRepositorio
     {
+        IList<EstoqueSangue> ConsultaNecessidades(string tipoSanguineo);
         void Create(EstoqueSangue entity);
         void Delete(EstoqueSangue entity);
         IList<EstoqueSangue> Get();

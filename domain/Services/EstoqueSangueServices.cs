@@ -28,6 +28,8 @@ namespace domain.Services
 
         public void Create(EstoqueSangueViewModel estoquesangue)
         {
+            if (!GetTipoSanguineos().Contains(estoquesangue.TipoSanguineo)) throw new Exception("Tipo Sanguineo não encontrado.");
+
             var doador = _doadoresRepositorio.GetById(estoquesangue.DoadorId);
             if (doador == null) throw new Exception("Doador não encontrado.");
 
@@ -45,6 +47,8 @@ namespace domain.Services
 
         public void Update(long id, EstoqueSangueViewModel estoquesangue)
         {
+            if (!GetTipoSanguineos().Contains(estoquesangue.TipoSanguineo)) throw new Exception("Tipo Sanguineo não encontrado.");
+
             var estoquesangueById = _estoquesangueRepositorio.GetById(id);
             if (estoquesangueById == null) throw new Exception("EstoqueSangue não encontrado.");
 
@@ -57,6 +61,30 @@ namespace domain.Services
             if (estoquesangue == null) throw new Exception("EstoqueSangue não encontrado.");
 
             _estoquesangueRepositorio.Delete(estoquesangue);
+        }
+
+        public List<string> GetTipoSanguineos()
+        {
+            return new List<string>
+            {
+                "A+",
+                "A-",
+                "B+",
+                "B-",
+                "AB+",
+                "AB-",
+                "O+",
+                "O-"
+            };
+        }
+
+        public string ConsultaNecessidades(string tipoSanguineo)
+        {
+            if (!GetTipoSanguineos().Contains(tipoSanguineo)) throw new Exception("Tipo Sanguineo não encontrado.");
+
+            var bolsaSangueByTipoSanguineo = _estoquesangueRepositorio.ConsultaNecessidades(tipoSanguineo);
+
+            return $"Existem {bolsaSangueByTipoSanguineo.Count} bolsas de sangue restante";
         }
     }
 }

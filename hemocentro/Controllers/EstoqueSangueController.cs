@@ -73,5 +73,32 @@ namespace hemocentro.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("GetTipoSanguineos")]
+        public IActionResult GetTipoSanguineos()
+        {
+            try
+            {
+                return Ok(_estoquesangueService.GetTipoSanguineos());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("ConsultaNecessidades/{tipoSanguineo}")]
+        public IActionResult ConsultaNecessidades(string tipoSanguineo)
+        {
+            try
+            {
+                var consulta = _estoquesangueService.ConsultaNecessidades(tipoSanguineo);
+                return Ok(consulta);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

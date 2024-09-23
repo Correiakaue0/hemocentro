@@ -45,5 +45,12 @@ namespace infra.Repositorios
         {
             return _context.Set<EstoqueSangue>().ToList();
         }
+
+        public IList<EstoqueSangue> ConsultaNecessidades(string tipoSanguineo)
+        {
+            return (from i in _context.EstoqueSangue
+                    where i.TipoSanguineo == tipoSanguineo
+                    select i).ToList();
+        }
     }
 }
