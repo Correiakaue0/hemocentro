@@ -11,6 +11,7 @@ namespace domain.ViewModel
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public int Telafone { get; set; }
         public string TipoSanguineo { get; set; }
         public DateTime DataNasc { get; set; }
         public string Peso { get; set; }

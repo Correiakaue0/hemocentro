@@ -27,6 +27,8 @@ namespace domain.Services
 
         public void Create(DoadoresViewModel doadorViewModel)
         {
+            if (!GetTipoSanguineos().Contains(doadorViewModel.TipoSanguineo)) throw new Exception("Tipo Sanguineo não encontrado.");
+
             var idade = (DateTime.Now.Year - doadorViewModel.DataNasc.Year);
             if (idade < 18 || idade > 69) throw new Exception("Doador não pode ser menor que 18 anos ou maior que 69.");
 
@@ -35,6 +37,7 @@ namespace domain.Services
                 Name = doadorViewModel.Name,
                 Role = "doador",
                 Email = doadorViewModel.Email,
+                Telafone = doadorViewModel.Telafone,
                 Password = PasswordService.HashPassword(doadorViewModel.Password),
                 TipoSanguineo = doadorViewModel.TipoSanguineo,
                 DataNasc = doadorViewModel.DataNasc,
@@ -50,6 +53,7 @@ namespace domain.Services
             if (doadoresById == null) throw new Exception("Doador não encontrado.");
 
             doadoresById.Peso = doadorViewModel.Peso;
+            doadoresById.Telafone = doadorViewModel.Telafone;
 
             _doadoresRepositorio.Update(doadoresById);
         }
@@ -60,6 +64,21 @@ namespace domain.Services
             if (doadores == null) throw new Exception("Doador não encontrado.");
 
             _doadoresRepositorio.Delete(doadores);
+        }
+
+        public List<string> GetTipoSanguineos()
+        {
+            return new List<string>
+            {
+                "A+",
+                "A-",
+                "B+",
+                "B-",
+                "AB+",
+                "AB-",
+                "O+",
+                "O-"
+            };
         }
     }
 }

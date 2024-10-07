@@ -20,6 +20,10 @@ namespace infra.Mapping
                 .HasMaxLength(100)
                 .IsRequired();
 
+            builder.Property(u => u.Telafone)
+                .HasColumnName("Telafone")
+                .IsRequired();
+
             builder.Property(u => u.DataNasc)
                 .HasColumnName("DataNasc")
                 .IsRequired();

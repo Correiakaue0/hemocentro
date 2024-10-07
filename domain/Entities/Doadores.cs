@@ -10,6 +10,7 @@ namespace domain.Entities
     public class Doadores : User
     {
         public string TipoSanguineo { get; set; }
+        public int Telafone { get; set; }
         public DateTime DataNasc { get; set; }
         public string Peso { get; set; }
 

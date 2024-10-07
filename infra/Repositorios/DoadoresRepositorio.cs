@@ -45,5 +45,12 @@ namespace infra.Repositorios
         {
             return _context.Set<Doadores>().ToList();
         }
+
+        public IList<Doadores> ObterDoadoresPorTipoSanguineo(string tipoSanguineo)
+        {
+            return (from i in _context.Doadores
+                    where i.TipoSanguineo == tipoSanguineo
+                    select i).ToList();
+        }
     }
 }

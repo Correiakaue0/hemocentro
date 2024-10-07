@@ -14,5 +14,6 @@ namespace domain.Interfaces.Repositorios
         IList<Doadores> Get();
         Doadores? GetById(long id);
         void Update(Doadores entity);
+        IList<Doadores> ObterDoadoresPorTipoSanguineo(string tipoSanguineo);
     }
 }
