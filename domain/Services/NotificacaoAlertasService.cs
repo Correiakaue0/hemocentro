@@ -44,13 +44,13 @@ namespace domain.Services
             SmtpClient smtp = new SmtpClient("smtp.gmail.com")
             {
                 Port = 587,
-                Credentials = new NetworkCredential("seu-email@provedor.com", "sua-senha"),
+                Credentials = new NetworkCredential("rafael@gmail.com", "h6yh6T5T54"),
                 EnableSsl = true,
             };
 
             MailMessage mail = new MailMessage
             {
-                From = new MailAddress("seu-email@provedor.com"),
+                From = new MailAddress("rafael@gmail.com"),
                 Subject = assunto,
                 Body = corpo,
                 IsBodyHtml = true,
@@ -62,28 +62,28 @@ namespace domain.Services
 
         public void EnviarSMS(int numero, string mensagem)
         {
-            const string accountSid = "SEU_ACCOUNT_SID";
-            const string authToken = "SEU_AUTH_TOKEN";
+            const string accountSid = "HD66S56S5DH";
+            const string authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImthdWUiLCJyb2xlIjoiYWRtaW4iLCJuYmYiOjE3MjgzNDM3MzAsImV4cCI6MTcyODM1MDkzMCwiaWF0IjoxNzI4MzQzNzMwfQ.hK0EYFnt835mgnFYPunflEzVqaMOLMR_OlMz-RVAw3Y";
 
             TwilioClient.Init(accountSid, authToken);
 
             var message = MessageResource.Create(
                 body: mensagem,
-                from: new PhoneNumber("SeuNumeroTwilio"),
+                from: new PhoneNumber("14998758463"),
                 to: new PhoneNumber(numero.ToString())
             );
         }
 
         public void EnviarWhatsApp(int numero, string mensagem)
         {
-            const string accountSid = "SEU_ACCOUNT_SID";
-            const string authToken = "SEU_AUTH_TOKEN";
+            const string accountSid = "XASSZV34R4345";
+            const string authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImthdWUiLCJyb2xlIjoiZG9hZG9yIiwibmJmIjoxNzI4MzQzNTYwLCJleHAiOjE3MjgzNTA3NjAsImlhdCI6MTcyODM0MzU2MH0.WmwbpJryn47Frm5oP23914y1NoheqZOEHXi6WFJ_mL8";
 
             TwilioClient.Init(accountSid, authToken);
 
             var message = MessageResource.Create(
                 body: mensagem,
-                from: new PhoneNumber("whatsapp:+SeuNumeroTwilio"),
+                from: new PhoneNumber("whatsapp:+5514998758463"),
                 to: new PhoneNumber("whatsapp:" + numero)
             );
         }

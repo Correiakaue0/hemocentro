@@ -17,9 +17,9 @@ namespace hemocentro.Controllers
             _notificacaoAlertasService = notificacaoAlertasService;
         }
 
-        [HttpPost("EnviarNotificacoesAlertas")]
+        [HttpPost("EnviarNotificacoesAlertas/{tipoSanguineo}")]
         [Authorize(Roles = "admin")]
-        public IActionResult EnviarNotificacoesAlertas([FromBody] string tipoSanguineo)
+        public IActionResult EnviarNotificacoesAlertas(string tipoSanguineo)
         {
             try
             {
