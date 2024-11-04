@@ -29,6 +29,15 @@ builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<Contexto, Contexto>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PermitirFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:9000") // Substitua pela URL do seu frontend
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 //Configuration Authentication Jwt
 builder.Services.AddJwtAuthentication();
@@ -37,6 +46,8 @@ builder.Services.AddJwtAuthentication();
 builder.Services.AddSwaggerConfiguration();
 
 var app = builder.Build();
+
+app.UseCors("PermitirFrontend");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

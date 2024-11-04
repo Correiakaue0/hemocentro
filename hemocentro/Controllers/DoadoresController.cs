@@ -18,7 +18,7 @@ namespace hemocentro.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "admin")]
+        [Authorize]
         public IActionResult Get()
         {
             try
