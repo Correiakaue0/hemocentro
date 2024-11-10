@@ -1,4 +1,5 @@
 ﻿using domain.Entities;
+using domain.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace domain.Interfaces.Repositorios
     {
         void Create(AgendamentoDoacoes entity);
         void Delete(AgendamentoDoacoes entity);
-        IList<AgendamentoDoacoes> Get();
+        IList<AgendamentoDoacoesReturnViewModel> Get();
         IList<AgendamentoDoacoes> getAgendamentoByDate(DateTime dataAgendamento);
         AgendamentoDoacoes? GetById(long id);
         Doadores? GetDoador(long doadorId);

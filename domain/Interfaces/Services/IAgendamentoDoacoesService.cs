@@ -13,6 +13,6 @@ namespace domain.Interfaces.Services
         void Agendar(AgendamentoDoacoesViewModel AgendamentoDoacoesViewModel);
         void AtualizarAgendamento(long id, AtualizarAgendamentoDoacoesViewModel agendamentoDoacoesViewModel);
         void CancelarAgendamento(long id);
-        IList<AgendamentoDoacoes> Get();
+        IList<AgendamentoDoacoesReturnViewModel> Get();
     }
 }

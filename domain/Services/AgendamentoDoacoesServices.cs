@@ -19,7 +19,7 @@ namespace domain.Services
             _agendamentoDoacoesRepositorio = agendamentoDoacoesRepositorio;
         }
 
-        public IList<AgendamentoDoacoes> Get()
+        public IList<AgendamentoDoacoesReturnViewModel> Get()
         {
             return _agendamentoDoacoesRepositorio.Get();
         }

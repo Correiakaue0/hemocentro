@@ -1,5 +1,6 @@
 ﻿using domain.Entities;
 using domain.Interfaces.Repositorios;
+using domain.ViewModel;
 using infra.Context;
 using System;
 using System.Collections.Generic;
@@ -42,9 +43,19 @@ namespace infra.Repositorios
             return _context.Set<AgendamentoDoacoes>().Find(id);
         }
 
-        public IList<AgendamentoDoacoes> Get()
+        public IList<AgendamentoDoacoesReturnViewModel> Get()
         {
-            return _context.Set<AgendamentoDoacoes>().ToList();
+            return (from i in _context.AgendamentoDoacoes
+                    join doadores in _context.Doadores
+                on i.DoadorId equals doadores.Id
+                    select new AgendamentoDoacoesReturnViewModel
+                    {
+                        Id = i.Id,
+                        Codigo = i.Codigo,
+                        DataAgendamento = i.DataAgendamento,
+                        Local = i.Local,
+                        DoadorNome = doadores.Name
+                    }).ToList();
         }
 
         public IList<AgendamentoDoacoes> getAgendamentoByDate(DateTime dataAgendamento)
