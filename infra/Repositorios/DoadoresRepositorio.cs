@@ -40,6 +40,11 @@ namespace infra.Repositorios
         {
             return _context.Set<Doadores>().Find(id);
         }
+        public Doadores? GetByEmail(string email)
+        {
+            return (from i in _context.Doadores where i.Email == email select i).FirstOrDefault();
+        }
+
 
         public IList<Doadores> Get()
         {

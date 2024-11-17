@@ -21,7 +21,11 @@ namespace Store.Controllers
             try
             {
                 var token =_loginService.Login(loginViewModel);
-                return Ok(token);
+                return Ok(new
+                {
+                    UserId = token.Item1,
+                    Token = token.Item2,
+                });
             }
             catch (Exception ex)
             {

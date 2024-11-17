@@ -32,6 +32,21 @@ namespace hemocentro.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        [Authorize(Roles = "doador, admin")]
+        public IActionResult GetById(int id)
+        {
+            try
+            {
+                var doador = _doadoresService.GetById(id);
+                return Ok(doador);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost]
         public IActionResult Create([FromBody] DoadoresViewModel doadores)
         {

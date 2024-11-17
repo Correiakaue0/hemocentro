@@ -28,6 +28,8 @@ builder.Services.AddScoped<IAgendamentoDoacoesRepositorio, AgendamentoDoacoesRep
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<Contexto, Contexto>();
+builder.Services.AddScoped<IConsultaRepositorio, ConsultaRepositorio>();
+builder.Services.AddScoped<IConsultaService, ConsultaServices>();
 
 builder.Services.AddCors(options =>
 {

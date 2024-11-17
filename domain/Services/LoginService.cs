@@ -13,14 +13,14 @@ namespace Service.Services
             _userRepository = userRepository;
         }
 
-        public string Login(LoginViewModel loginViewModel)
+        public (long, string) Login(LoginViewModel loginViewModel)
         {
             var user = _userRepository.GetByEmail(loginViewModel.Email);
             if (user == null) throw new Exception("Email não existe.");
 
             if (!PasswordService.VerifyPassword(loginViewModel.Password, user.Password)) throw new Exception("Senha incorreta.");
 
-            return TokenService.GerarToken(user);
+            return (user.Id, TokenService.GerarToken(user));
         }
     }
 }

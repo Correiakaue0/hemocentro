@@ -13,6 +13,7 @@ namespace domain.Interfaces.Services
         void Create(DoadoresViewModel doador);
         void Delete(long id);
         IList<Doadores> Get();
+        DoadoresReturnViewModel GetById(int id);
         void Update(long id, DoadoresViewModel doadores);
     }
 }
