@@ -11,6 +11,7 @@ namespace domain.Interfaces.Services
     public interface IDoadoresService
     {
         void Create(DoadoresViewModel doador);
+        void CreateDoadorAdmin(DoadoresViewModel doadorViewModel);
         void Delete(long id);
         IList<Doadores> Get();
         DoadoresReturnViewModel GetById(int id);

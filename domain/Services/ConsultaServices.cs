@@ -24,6 +24,11 @@ namespace domain.Services
             return _consultaRepositorio.Get();
         }
 
+        public IList<ConsultaReturnViewModel> GetConsultaByDoadorId(long doadorId)
+        {
+            return _consultaRepositorio.GetConsultaByDoadorId(doadorId);
+        }
+
         public void Agendar(ConsultaViewModel consultaViewModel)
         {
 

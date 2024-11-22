@@ -14,5 +14,6 @@ namespace domain.Interfaces.Services
         void AtualizarConsulta(int id, AtualizarConsultaViewModel consultaViewModel);
         void CancelarConsulta(int id);
         IList<ConsultaReturnViewModel> Get();
+        IList<ConsultaReturnViewModel> GetConsultaByDoadorId(long doadorId);
     }
 }

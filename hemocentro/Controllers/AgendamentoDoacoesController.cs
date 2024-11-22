@@ -33,6 +33,21 @@ namespace hemocentro.Controllers
             }
         }
 
+        [HttpGet("GetAgendamentoByDoadorId/{doadorId}")]
+        [Authorize]
+        public IActionResult GetAgendamentoByDoadorId(long doadorId)
+        {
+            try
+            {
+                var agendamentoDoacoes = _agendamentoDoacoesService.GetAgendamentoByDoadorId(doadorId);
+                return Ok(agendamentoDoacoes);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost]
         public IActionResult Agendar([FromBody] AgendamentoDoacoesViewModel agendamentoDoacoesViewModel)
         {

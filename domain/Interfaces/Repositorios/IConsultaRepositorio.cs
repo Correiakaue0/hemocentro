@@ -17,5 +17,6 @@ namespace domain.Interfaces.Repositorios
         Consulta? GetById(int id);
         void Update(Consulta entity);
         AgendamentoDoacoes? GetAgendamento(long agendamentoId);
+        IList<ConsultaReturnViewModel> GetConsultaByDoadorId(long doadorId);
     }
 }

@@ -33,6 +33,22 @@ namespace hemocentro.Controllers
             }
         }
 
+        [HttpGet("GetConsultaByDoadorId/{doadorId}")]
+        [Authorize()]
+        public IActionResult GetConsultaByDoadorId(long doadorId)
+        {
+            try
+            {
+                var consulta = _consultaService.GetConsultaByDoadorId(doadorId);
+                return Ok(consulta);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
         [HttpPost]
         public IActionResult Agendar([FromBody] ConsultaViewModel consultaViewModel)
         {

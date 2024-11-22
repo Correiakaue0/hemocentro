@@ -14,5 +14,6 @@ namespace domain.Interfaces.Services
         void AtualizarAgendamento(long id, AtualizarAgendamentoDoacoesViewModel agendamentoDoacoesViewModel);
         void CancelarAgendamento(long id);
         IList<AgendamentoDoacoesReturnViewModel> Get();
+        IList<AgendamentoDoacoesReturnViewModel> GetAgendamentoByDoadorId(long doadorId);
     }
 }

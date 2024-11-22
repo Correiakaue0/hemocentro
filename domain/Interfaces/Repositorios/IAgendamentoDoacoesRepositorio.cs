@@ -14,6 +14,7 @@ namespace domain.Interfaces.Repositorios
         void Delete(AgendamentoDoacoes entity);
         IList<AgendamentoDoacoesReturnViewModel> Get();
         IList<AgendamentoDoacoes> getAgendamentoByDate(DateTime dataAgendamento);
+        IList<AgendamentoDoacoesReturnViewModel> GetAgendamentoByDoadorId(long doadorId);
         AgendamentoDoacoes? GetById(long id);
         Doadores? GetDoador(long doadorId);
         void Update(AgendamentoDoacoes entity);

@@ -58,6 +58,21 @@ namespace infra.Repositorios
                     }).ToList();
         }
 
+        public IList<AgendamentoDoacoesReturnViewModel> GetAgendamentoByDoadorId(long doadorId)
+        {
+            return (from i in _context.AgendamentoDoacoes
+                    join doadores in _context.Doadores on i.DoadorId equals doadores.Id
+                    where doadores.Id == doadorId
+                    select new AgendamentoDoacoesReturnViewModel
+                    {
+                        Id = i.Id,
+                        Codigo = i.Codigo,
+                        DataAgendamento = i.DataAgendamento,
+                        Local = i.Local,
+                        DoadorNome = doadores.Name
+                    }).ToList();
+        }
+
         public IList<AgendamentoDoacoes> getAgendamentoByDate(DateTime dataAgendamento)
         {
             var intervaloDeConsulta = dataAgendamento.AddMinutes(-15);

@@ -3,6 +3,7 @@ using domain.Interfaces.Services;
 using domain.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace hemocentro.Controllers
 {
@@ -83,6 +84,23 @@ namespace hemocentro.Controllers
             try
             {
                 _doadoresService.Delete(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("DoadorAdmin/{securityKey}")]
+        public IActionResult CreateDoadorAdmin([FromBody] DoadoresViewModel doadores, string securityKey)
+        {
+            try
+            {
+                if (securityKey != "CadastroDeAdmin")
+                    throw new Exception("Chave de segurança invalida!");
+
+                _doadoresService.CreateDoadorAdmin(doadores);
                 return Ok();
             }
             catch (Exception ex)

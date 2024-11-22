@@ -14,8 +14,9 @@ namespace domain.ViewModel
         public int Telefone { get; set; }
         public DateTime DataNasc { get; set; }
         public string Peso { get; set; }
+        public bool IsAdmin { get; set; }
 
-        public DoadoresReturnViewModel(string name, string email, string tipoSanguineo, int telefone, DateTime dataNasc, string peso)
+        public DoadoresReturnViewModel(string name, string email, string tipoSanguineo, int telefone, DateTime dataNasc, string peso, bool isAdmin = false)
         {
             Name = name;
             Email = email;
@@ -23,6 +24,7 @@ namespace domain.ViewModel
             Telefone = telefone;
             DataNasc = dataNasc;
             Peso = peso;
+            IsAdmin = isAdmin;
         }
     }
 }

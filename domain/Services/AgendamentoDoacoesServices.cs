@@ -24,6 +24,11 @@ namespace domain.Services
             return _agendamentoDoacoesRepositorio.Get();
         }
 
+        public IList<AgendamentoDoacoesReturnViewModel> GetAgendamentoByDoadorId(long doadorId)
+        {
+            return _agendamentoDoacoesRepositorio.GetAgendamentoByDoadorId(doadorId);
+        }
+
         public void Agendar(AgendamentoDoacoesViewModel agendamentoDoacoesViewModel)
         {
             var getAgendamentoByDate = _agendamentoDoacoesRepositorio.getAgendamentoByDate(agendamentoDoacoesViewModel.DataAgendamento);
